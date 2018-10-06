@@ -5,9 +5,10 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node-gyp build",
-    "compile": "node-gyp rebuild",
-    "start": "node ./example/demo.js"
+    "build": "call node-gyp clean configure build --arch=x64 && copy build\\Release\\tray.node tray.node",
+    "compile": "node-gyp rebuild && copy build\\Release\\tray.node tray.node",
+    "start": "node ./example/demo.js",
+    "build32": "node-gyp clean configure build --arch=ia32 && copy build\\Release\\tray.node tray32.node"
   },
   "repository": {
     "type": "hg",
