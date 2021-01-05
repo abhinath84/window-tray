@@ -34,6 +34,14 @@ HMENU popupMenu = NULL;
 
 //////////////////////////////////////////////////////////////////////////
 
+LONG myFunc(LPEXCEPTION_POINTERS p)
+{
+     printf("Exit!!!\n");     
+     return EXCEPTION_EXECUTE_HANDLER;
+}
+
+//////////////////////////////////////////////////////////////////////////
+
 class DummyWindow
 {
   public:
@@ -41,8 +49,13 @@ class DummyWindow
     {
         NodeTray *pThis = nullptr;
 
+//	printf("WindowProc: %d\n", uMsg);
+
         if (uMsg == WM_NCCREATE)
         {
+            printf("Setup exit\n");     
+            SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)&myFunc);    
+
             CREATESTRUCT *pCreate = (CREATESTRUCT *)lParam;
             pThis = (NodeTray *)pCreate->lpCreateParams;
             SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)pThis);

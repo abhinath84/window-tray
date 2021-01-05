@@ -102,6 +102,7 @@ var onShutdown = function (cb) {
 };
 
 var shutdown = function() {
+	console.log('Shutdown!');
 	tray.destroy();
 	process.exit(0);
 }
