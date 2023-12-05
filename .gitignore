@@ -1,0 +1,4 @@
+# auto-generated
+node_modules/
+build/
+dist/
