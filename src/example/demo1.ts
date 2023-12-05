@@ -1,7 +1,7 @@
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { WindowsTrayIcon } from "../index.js";
+import { WindowsTrayIcon } from "../windowstrayicon.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
